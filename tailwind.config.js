@@ -10,9 +10,15 @@ module.exports = {
     ],
 
     theme: {
+        fontFamily: {
+            serif: ['Lora', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+        },
         extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            colors: {
+                'very-dark-brown': '#32281E',
+                'dark-brown': '#56412C',
+                'light-brown': '#97714A',
             },
         },
     },

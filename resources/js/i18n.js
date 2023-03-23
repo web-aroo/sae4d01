@@ -23,6 +23,13 @@ i18next
 						players: 'Players',
 						minutes: 'Minutes',
 					},
+					paymentMethod: {
+						cardHolder: 'Card Holder',
+						cardNumber: 'Card Number',
+						expirationDate: 'Expiration Date',
+						cvc: 'CVC',
+						proceedToPayment: 'Proceed to payment',
+					}
 				},
 			},
 		},

@@ -1,34 +1,39 @@
 <template>
+	<div class="flex justify-center">
+		<div
+			v-for="(step, index) in steps"
+			class="flex"
+			:class="index >= currentStep ? 'opacity-50' : ''"
+		>
+			<div
+				class="h-2 w-24 translate-y-7 -mx-4 bg-light-brown"
+				v-if="index > 0"
+			></div>
 
-	<div class='flex justify-center gap-4'>
-		<div v-for='(step,index) in steps' class='flex gap-4' :class='index >= currentStep ? "opacity-50" : ""'>
-
-			<div class='h-2 w-24 translate-y-7 bg-light-brown' v-if='index > 0'></div>
-
-			<div class='grid place-items-center'>
-				<div class='w-16 h-16 bg-light-brown grid place-items-center diamond-shape text-white font-serif text-2xl'>
-					{{index + 1}}
+			<div class="grid place-items-center">
+				<div class="w-16 h-16 bg-light-brown grid place-items-center diamond-shape font-serif text-2xl">
+					{{ index + 1 }}
 				</div>
-				<div class='font-serif'>
-					{{step}}
+				<div class="font-serif text-black">
+					{{ step }}
 				</div>
 			</div>
-
 		</div>
 	</div>
-
 </template>
 
 <script setup>
+import { useTranslation } from 'i18next-vue';
 
-const props = defineProps({
-	currentStep: Number
+defineProps({
+	currentStep: Number,
 });
 
-const steps = [
-	"Cart",
-	"Checkout",
-	"Confirmation"
-];
+const { t } = useTranslation();
 
+const steps = [
+	t('progressBar.cart'),
+	t('progressBar.checkout'),
+	t('progressBar.confirmation'),
+];
 </script>

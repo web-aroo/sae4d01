@@ -23,6 +23,11 @@ i18next
 						players: 'Players',
 						minutes: 'Minutes',
 					},
+					progressBar: {
+						cart: 'Cart',
+						checkout: 'Checkout',
+						confirmation: 'Confirmation',
+					},
 					paymentMethod: {
 						cardHolder: 'Card Holder',
 						cardNumber: 'Card Number',

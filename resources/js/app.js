@@ -14,11 +14,12 @@ import {
 	faBuildingColumns,
 	faChevronUp,
 } from '@fortawesome/free-solid-svg-icons';
-import { faPaypal } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faFacebook, faPaypal } from '@fortawesome/free-brands-svg-icons'
+
 import I18NextVue from 'i18next-vue';
 import i18next from 'i18next';
 
-library.add(faKey, faUsers, faClock, faPaypal, faBuildingColumns, faChevronUp);
+library.add(faKey, faUsers, faClock, faInstagram, faFacebook, faPaypal, faBuildingColumns, faChevronUp);
 
 const appName =
 	window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';

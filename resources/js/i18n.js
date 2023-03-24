@@ -34,7 +34,15 @@ i18next
 						expirationDate: 'Expiration Date',
 						cvc: 'CVC',
 						proceedToPayment: 'Proceed to payment',
-					}
+					},
+					header: {
+						logo: 'Kaiserstuhl Escape Logo',
+						home: 'Home',
+						adventures: 'Adventures',
+						aboutUs: 'About us',
+						contact: 'Contact',
+						cart: 'Cart',
+					},
 				},
 			},
 		},

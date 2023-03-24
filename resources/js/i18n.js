@@ -43,6 +43,13 @@ i18next
 						contact: 'Contact',
 						cart: 'Cart',
 					},
+					checkoutForm: {
+						firstName: 'First name',
+						lastName: 'Last name',
+						emailAddress: 'Email address',
+						phoneNumber: 'Phone number',
+						nextStep: 'Next step',
+					},
 				},
 			},
 		},

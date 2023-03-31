@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class PriceFormula extends Model
 {
+    use CrudTrait;
     protected $fillable = [
         'adventure_id',
         'start_date',

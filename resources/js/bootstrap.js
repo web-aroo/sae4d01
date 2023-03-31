@@ -14,6 +14,47 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 import './i18n';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+	faKey,
+	faUsers,
+	faClock,
+	faStar,
+	faBuildingColumns,
+	faChevronUp,
+	faCalendarDays,
+	faXmark,
+	faPenToSquare,
+	faCartShopping,
+	faBars,
+	faTimes,
+	faLocationDot,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+	faInstagram,
+	faFacebook,
+	faPaypal,
+} from '@fortawesome/free-brands-svg-icons';
+
+library.add(
+	faKey,
+	faUsers,
+	faClock,
+	faStar,
+	faInstagram,
+	faFacebook,
+	faPaypal,
+	faBuildingColumns,
+	faChevronUp,
+	faCalendarDays,
+	faXmark,
+	faPenToSquare,
+	faCartShopping,
+	faBars,
+	faTimes,
+	faLocationDot
+);
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

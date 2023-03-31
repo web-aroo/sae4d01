@@ -50,6 +50,9 @@ i18next
 						phoneNumber: 'Phone number',
 						nextStep: 'Next step',
 					},
+					adventureCard: {
+						bookNow: 'Book now',
+					},
 				},
 			},
 		},

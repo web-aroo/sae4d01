@@ -10,8 +10,7 @@ class Order extends Model
     use CrudTrait;
     protected $fillable = [
         'user_id',
-        'status',
-        'total_price',
+        'paid',
     ];
 
     public function user()

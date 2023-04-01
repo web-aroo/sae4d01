@@ -21,7 +21,7 @@ class AdventureCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
@@ -33,7 +33,7 @@ class AdventureCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
@@ -52,13 +52,13 @@ class AdventureCrudController extends CrudController
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
@@ -67,11 +67,11 @@ class AdventureCrudController extends CrudController
         CRUD::setValidation(AdventureRequest::class);
 
         CRUD::field('name');
-        CRUD::field('image_url');
-        CRUD::field('description');
+        CRUD::field('image_url')->type("upload");
+        CRUD::field('description')->type("textarea");
         CRUD::field('difficulty');
-        CRUD::field('latitude');
-        CRUD::field('longitude');
+        CRUD::field('latitude')->type("number");
+        CRUD::field('longitude')->type("number");
         CRUD::field('min_player_count');
         CRUD::field('max_player_count');
         CRUD::field('duration');
@@ -79,13 +79,13 @@ class AdventureCrudController extends CrudController
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */

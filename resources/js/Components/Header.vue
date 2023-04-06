@@ -10,7 +10,7 @@ const open = ref(false);
 
 <template>
 	<header
-		class="py-2 lg:py-4 px-5 lg:px-10 grid grid-cols-2 lg:grid-cols-4 fixed inset-x-0 top-0 items-center bg-gradient-to-b from-black to-transparent"
+		class="py-2 lg:py-4 px-5 lg:px-10 grid grid-cols-2 lg:grid-cols-4 fixed inset-x-0 top-0 items-center bg-gradient-to-b from-black to-transparent z-10"
 	>
 		<img src="/img/logo.png" :alt="t('header.logo')" />
 		<nav

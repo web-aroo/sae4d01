@@ -1,7 +1,7 @@
 <template>
 
 	<PageLayout>
-		<Hero></Hero>
+		<Hero image='/img/chess.jpg'></Hero>
 		<Container>
 			<AdventureCard></AdventureCard>
 		</Container>

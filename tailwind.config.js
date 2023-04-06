@@ -19,6 +19,7 @@ module.exports = {
 				'very-dark-brown': '#32281E',
 				'dark-brown': '#56412C',
 				'light-brown': '#97714A',
+				'bg-color': '#090401',
 			},
 			boxShadow: {
 				custom: '0px 0px 8px 2px rgba(0, 0, 0, 0.25)',

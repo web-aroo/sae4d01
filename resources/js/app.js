@@ -4,6 +4,7 @@ import '../css/app.css';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { setupCalendar } from 'v-calendar';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -26,6 +27,7 @@ createInertiaApp({
 			.use(plugin)
 			.use(ZiggyVue, Ziggy)
 			.use(I18NextVue, { i18next })
+			.use(setupCalendar, {})
 			.component('font-awesome-icon', FontAwesomeIcon)
 			.mount(el);
 	},

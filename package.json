@@ -24,8 +24,11 @@
         "@fortawesome/free-brands-svg-icons": "^6.3.0",
         "@fortawesome/free-solid-svg-icons": "^6.3.0",
         "@fortawesome/vue-fontawesome": "^3.0.3",
+        "@popperjs/core": "^2.11.7",
         "i18next": "^22.4.13",
         "i18next-browser-languagedetector": "^7.0.1",
-        "i18next-vue": "^2.1.1"
+        "i18next-vue": "^2.1.1",
+        "lodash": "^4.17.21",
+        "v-calendar": "^3.0.3"
     }
 }

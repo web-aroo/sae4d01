@@ -18,7 +18,8 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
 	return Inertia::render('Home', [
-		// Props
+		'adventures' => \App\Models\Adventure::orderBy('difficulty')->take(3)->get()->toArray(),
+		'reviews' => \App\Models\Review::with('user')->inRandomOrder()->take(2)->get()->toArray(),
 	]);
 });
 

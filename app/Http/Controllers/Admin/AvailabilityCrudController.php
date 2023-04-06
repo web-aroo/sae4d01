@@ -61,7 +61,7 @@ class AvailabilityCrudController extends CrudController
     {
         CRUD::setValidation(AvailabilityRequest::class);
 
-        CRUD::field('adventure_id');
+        CRUD::field('adventure_id')->type("select");
         CRUD::field('start_at')->type("datetime");
         CRUD::field('end_at')->type("datetime");
         CRUD::field('price')->type("number");

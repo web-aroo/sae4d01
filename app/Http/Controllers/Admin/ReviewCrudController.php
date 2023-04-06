@@ -39,8 +39,8 @@ class ReviewCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('user_id');
-        CRUD::column('adventure_id');
+        CRUD::column('user_id')->type("select");
+        CRUD::column('adventure_id')->type("select");
         CRUD::column('stars');
         CRUD::column('text');
 

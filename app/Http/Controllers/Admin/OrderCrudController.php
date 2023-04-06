@@ -59,7 +59,7 @@ class OrderCrudController extends CrudController
     {
         CRUD::setValidation(OrderRequest::class);
 
-        CRUD::field('user_id');
+        CRUD::field('user_id')->type("select");
         CRUD::field('paid');
 
         /**

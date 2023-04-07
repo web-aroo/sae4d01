@@ -23,12 +23,11 @@ import {
 	faBuildingColumns,
 	faChevronUp,
 	faCalendarDays,
-	faXmark,
-	faPenToSquare,
 	faCartShopping,
 	faBars,
 	faTimes,
 	faLocationDot,
+	faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
 import {
 	faInstagram,
@@ -47,12 +46,11 @@ library.add(
 	faBuildingColumns,
 	faChevronUp,
 	faCalendarDays,
-	faXmark,
-	faPenToSquare,
 	faCartShopping,
 	faBars,
 	faTimes,
-	faLocationDot
+	faLocationDot,
+	faTrashCan
 );
 
 /**

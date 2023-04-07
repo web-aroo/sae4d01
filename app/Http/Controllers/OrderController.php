@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Adventure;
+use App\Models\Availability;
 use App\Models\Order;
+use App\Models\User;
 use Inertia\Inertia;
 
 class OrderController extends Controller
@@ -22,7 +25,12 @@ class OrderController extends Controller
 	 */
 	public function create()
 	{
-		return Inertia::render('Cart/Cart');
+
+		$availabilities = Availability::with(['adventure','priceFormula'])->get()->toArray(); // For test purpose
+
+		return Inertia::render('Cart/Cart', [
+			"availabilities" => $availabilities
+		]);
 	}
 
 	/**
@@ -30,6 +38,7 @@ class OrderController extends Controller
 	 */
 	public function store(StoreOrderRequest $request)
 	{
+
 		return Inertia::render('Cart/Checkout');
 	}
 

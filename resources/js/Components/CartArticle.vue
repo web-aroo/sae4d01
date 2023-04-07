@@ -25,10 +25,7 @@
 			</div>
 			<div class='flex flex-row-reverse gap-4'>
 				<button>
-					<font-awesome-icon size='2x' icon="fa-solid fa-xmark"/>
-				</button>
-				<button>
-					<font-awesome-icon size='2x' icon="fa-solid fa-pen-to-square"/>
+					<font-awesome-icon size='2x' icon="fa-solid fa-trash-can"/>
 				</button>
 			</div>
 		</div>

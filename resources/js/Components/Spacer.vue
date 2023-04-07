@@ -1,5 +1,5 @@
 <template>
-	<div :class="`h-${height}`"></div>
+	<div :class='"mt-"+height'></div>
 </template>
 
 <script setup>

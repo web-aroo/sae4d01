@@ -2,74 +2,49 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Availability;
 use App\Models\Order;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class OrderController extends Controller
 {
-	/**
-	 * Display a listing of the resource.
-	 */
-	public function index()
+
+	public function order()
 	{
-		return;
+
+		$availabilities = Availability::with(['adventure','priceFormula'])->get()->toArray(); // For test purpose
+
+		return Inertia::render('Order', [
+			"availabilities" => $availabilities
+		]);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 */
-	public function create()
-	{
-		return Inertia::render('Cart/Cart');
-	}
+	public function checkout(Request $request){
 
-	/**
-	 * Store a newly created resource in storage.
-	 */
-	public function store(StoreOrderRequest $request)
-	{
-		return Inertia::render('Cart/Checkout');
-	}
+		$firstName = $request->input("first_name");
+		$lastName = $request->input("last_name");
+		$emailAddress = $request->input("email_address");
+		$phoneNumber = $request->input("phone_number");
+		$availabilities = $request->input("availabilities");
 
-	/**
-	 * Pays a created order
-	 */
-	public function checkout(Order $order)
-	{
-		return Inertia::render('Cart/Confirmation');
-	}
+		$user = User::firstOrCreate(
+			['name' => $firstName." ".$lastName],
+			['email' => $emailAddress],
+			['phone_number' => $phoneNumber] // TODO: fix le numéro qui ne veut pas s'enregister
+		);
 
-	/**
-	 * Display the specified resource.
-	 */
-	public function show(Order $order)
-	{
-		//
-	}
+		$order = new Order();
+		$order->user_id = $user->id;
+		$order->paid = 1;
+		$order->save();
 
-	/**
-	 * Show the form for editing the specified resource.
-	 */
-	public function edit(Order $order)
-	{
-		//
-	}
+		foreach ($availabilities as $a){
+			$availability = Availability::find($a["id"]);
+			$availability->order_id = $order->id;
+			$availability->save();
+		}
 
-	/**
-	 * Update the specified resource in storage.
-	 */
-	public function update(UpdateOrderRequest $request, Order $order)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 */
-	public function destroy(Order $order)
-	{
-		//
 	}
 }

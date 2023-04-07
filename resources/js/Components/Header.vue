@@ -43,7 +43,7 @@ const open = ref(false);
 		</nav>
 		<div class="hidden lg:flex items-center gap-4 justify-self-end">
 			<Link
-				href="/cart"
+				href="/order"
 				class="bg-white text-black px-6 py-2 rounded-full"
 			>
 				<font-awesome-icon :icon="['fas', 'cart-shopping']" />
@@ -92,7 +92,7 @@ const open = ref(false);
 			<div class="flex flex-col items-start justify-start h-full mt-5">
 				<div class="flex flex-col gap-6">
 					<Link
-						href="/cart"
+						href="/order"
 						class="bg-white text-black px-6 py-2 rounded-full"
 					>
 						<font-awesome-icon :icon="['fas', 'cart-shopping']" />

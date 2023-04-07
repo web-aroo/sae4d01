@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::resource('adventure', AdventureController::class)->only(['show']);
-Route::resource('order', OrderController::class)->only(['create', 'store']);
-Route::post('/order/{order}/checkout', [OrderController::class, 'checkout']);
+Route::get('/order', [OrderController::class, "order"]);
+Route::post('/checkout', [OrderController::class, "checkout"]);
 
 require __DIR__ . '/auth.php';

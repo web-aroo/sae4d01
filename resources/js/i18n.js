@@ -25,10 +25,13 @@ i18next
 					},
 					progressBar: {
 						cart: 'Cart',
-						checkout: 'Checkout',
+						details: 'Details',
+						payment: 'Payment',
 						confirmation: 'Confirmation',
 					},
 					paymentMethod: {
+						error: 'Every fields must be fulfilled correctly.',
+						blueCard: "Blue Card",
 						cardHolder: 'Card Holder',
 						cardNumber: 'Card Number',
 						expirationDate: 'Expiration Date',
@@ -43,12 +46,12 @@ i18next
 						contact: 'Contact',
 						cart: 'Cart',
 					},
-					checkoutForm: {
+					detailsForm: {
+						error: 'Every fields must be fulfilled correctly.',
 						firstName: 'First name',
 						lastName: 'Last name',
 						emailAddress: 'Email address',
 						phoneNumber: 'Phone number',
-						nextStep: 'Next step',
 					},
 					adventureCard: {
 						bookNow: 'Book now',
@@ -62,6 +65,15 @@ i18next
 						priceFormula: 'Pick a price formula',
 						goToCart: 'Go to cart',
 					},
+					cart:{
+						empty: "The cart is empty.",
+						nextStep: "Next step",
+						previousStep: "Previous step"
+					},
+					confirmation:{
+						message: "We are pleased to confirm that we have received your order and it is being processed. We will keep you updated on the progress of your order via email. Please do not hesitate to contact us if you have any questions or concerns regarding your order.",
+						backToHome: "Go back to home",
+					}
 				},
 			},
 		},

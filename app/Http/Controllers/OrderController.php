@@ -27,11 +27,6 @@ class OrderController extends Controller
 		$lastName = $request->input("last_name");
 		$emailAddress = $request->input("email_address");
 		$phoneNumber = $request->input("phone_number");
-		$cardHolder = $request->input("card_holder");
-		$cardNumber = $request->input("card_number");
-		$expirationDateMonth = $request->input("expiration_date_month");
-		$expirationDateYear = $request->input("expiration_date_year");
-		$cvc = $request->input("cvc");
 		$availabilities = $request->input("availabilities");
 
 		$user = User::firstOrCreate(

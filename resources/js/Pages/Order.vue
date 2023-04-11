@@ -224,16 +224,34 @@ const steps = [
 ];
 
 function checkoutPaypal() {
-	// TODO: Requête pour créer la commande
+	const data = {
+		first_name: firstName.value,
+		last_name: lastName.value,
+		phone_number: phoneNumber.value,
+		email_address: emailAddress.value,
+		availabilities: props.availabilities
+	};
+
+	fetch('/checkout', {
+		method: 'post',
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(data)
+	}).then(response => {
+		if (response.ok) {
+			nextStep();
+		}
+	});
 }
 
 function checkoutBlueCard() {
 
-	// if (!isPaymentFormValid()) {
-	// 	error.value = t('paymentMethod.error');
-	// 	return;
-	// }
-	// error.value = null;
+	if (!isPaymentFormValid()) {
+		error.value = t('paymentMethod.error');
+		return;
+	}
+	error.value = null;
 
 	const data = {
 		first_name: firstName.value,
@@ -264,10 +282,10 @@ function checkoutBlueCard() {
 
 function nextStep() {
 
-	// if (stepIndex.value === 1 && !isDetailsFormValid()) {
-	// 	error.value = t('detailsForm.error');
-	// 	return;
-	// }
+	if (stepIndex.value === 1 && !isDetailsFormValid()) {
+		error.value = t('detailsForm.error');
+		return;
+	}
 
 	if (stepIndex.value < steps.length - 1) stepIndex.value++;
 	error.value = null;

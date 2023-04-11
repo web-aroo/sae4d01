@@ -7,17 +7,17 @@
 			<div class='grid place-items-center'>
 				<div
 					class='grid grid-cols-2 grid-rows-2 m-1 gap-4 md:flex md:justify-between mx-auto md:gap-24 md:mx-5'>
-					<LinkList title='Navigation'>
-						<li><a href='#'>Home</a></li>
-						<li><a href='#'>Adventures</a></li>
-						<li><a href='#'>About us</a></li>
-						<li><a href='#'>Contact</a></li>
+					<LinkList :title='t("footer.navigation.title")'>
+						<li><a href='#'>{{t("footer.navigation.home")}}</a></li>
+						<li><a href='#'>{{t("footer.navigation.adventures")}}</a></li>
+						<li><a href='#'>{{t("footer.navigation.aboutUs")}}</a></li>
+						<li><a href='#'>{{t("footer.navigation.contact")}}</a></li>
 					</LinkList>
-					<LinkList title='Legal'>
-						<li><a href='#'>Privacy policy</a></li>
-						<li><a href='#'>Terms of use</a></li>
+					<LinkList :title='t("footer.legal.title")'>
+						<li><a href='#'>{{t("footer.legal.privacyPolicy")}}</a></li>
+						<li><a href='#'>{{t("footer.legal.termsOfUse")}}</a></li>
 					</LinkList>
-					<LinkList title='Follow us'>
+					<LinkList :title='t("footer.followUs")'>
 						<div class='flex gap-3 text-3xl'>
 							<li><a href='#'>
 								<font-awesome-icon :icon="['fab', 'instagram']" />
@@ -27,7 +27,7 @@
 							</a></li>
 						</div>
 					</LinkList>
-					<LinkList title='Contact us'>
+					<LinkList :title='t("footer.contactUs")'>
 						<li><a href='tel:0988254269'>0988254269</a></li>
 						<li><a href='mailto:booking@we-escape.de'>booking@we-escape.de</a></li>
 					</LinkList>
@@ -38,11 +38,10 @@
 </template>
 
 
-<script>
-import LinkList from '@/Components/LinkList.vue';
+<script setup>
+import LinkList from "@/Components/LinkList.vue";
+import {useTranslation} from "i18next-vue";
 
-export default {
-	name: 'Footer',
-	components: { LinkList }
-};
+const {t} = useTranslation();
+
 </script>

@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import { useTranslation } from 'i18next-vue';
+import LanguageSwitcher from "@/Components/LanguageSwitcher.vue";
 
 const { t } = useTranslation();
 
@@ -41,6 +42,7 @@ const open = ref(false);
 				{{ t('header.contact') }}
 			</a>
 		</nav>
+
 		<div class="hidden lg:flex items-center gap-4 justify-self-end">
 			<Link
 				href="/order"
@@ -49,7 +51,7 @@ const open = ref(false);
 				<font-awesome-icon :icon="['fas', 'cart-shopping']" />
 				{{ t('header.cart') }}
 			</Link>
-			<!-- LanguageSelector -->
+			<LanguageSwitcher></LanguageSwitcher>
 		</div>
 		<div class="lg:hidden justify-self-end">
 			<button
@@ -73,7 +75,7 @@ const open = ref(false);
 		leave-to-class="-translate-x-full"
 	>
 		<nav
-			class="fixed py-2 px-5 inset-0 bg-black text-white lowercase"
+			class="fixed py-2 px-5 inset-0 bg-black text-white lowercase z-20"
 			v-if="open"
 		>
 			<div class="grid grid-cols-2">
@@ -98,7 +100,7 @@ const open = ref(false);
 						<font-awesome-icon :icon="['fas', 'cart-shopping']" />
 						{{ t('header.cart') }}
 					</Link>
-					<!-- LanguageSelector -->
+					<LanguageSwitcher></LanguageSwitcher>
 					<Link href="/">
 						{{ t('header.home') }}
 					</Link>

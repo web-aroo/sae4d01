@@ -2,13 +2,13 @@
 	<PageLayout>
 		<Hero image="/img/chess.jpg">
 			<TitleAndSubtitle
-				title="One adventure at a time"
-				subtitle="View our adventures"
+				:title='t("home.title")'
+				:subtitle='t("home.subtitle")'
 			></TitleAndSubtitle>
 		</Hero>
 		<Container>
 			<Spacer height="10"></Spacer>
-			<Title2> Our adventures </Title2>
+			<Title2> {{t("home.ourAdventures")}} </Title2>
 			<Spacer height="16"></Spacer>
 			<div v-for="(adventure, i) in adventures">
 				<AdventureCard
@@ -30,7 +30,7 @@
 			</div>
 
 			<Spacer height="16"></Spacer>
-			<Title2> Testimonials </Title2>
+			<Title2> {{t("home.testimonials")}} </Title2>
 			<Spacer height="16"></Spacer>
 			<div class="flex gap-12">
 				<Testimonial
@@ -55,6 +55,9 @@ import Spacer from '@/Components/Spacer.vue';
 import Testimonial from '@/Components/Testimonial.vue';
 
 import { defineProps } from 'vue';
+import {useTranslation} from "i18next-vue";
+
+const {t} = useTranslation();
 
 const props = defineProps({
 	adventures: Array,

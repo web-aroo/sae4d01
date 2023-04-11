@@ -4,11 +4,34 @@
 
 		<Container class='mt-32'>
 
-			<ProgressBar :step-index='stepIndex' :steps='steps'></ProgressBar>
+			<div class="flex justify-center">
+				<div
+					v-for="(step, index) in steps"
+					class="flex"
+				>
+					<div
+						class="h-2 w-32 sm:w-48 md:w-64 translate-y-7 -mx-4 z-0"
+						:class="index >= stepIndex + 1 ? 'bg-very-dark-brown' : 'bg-light-brown'"
+						v-if="index > 0"
+					></div>
+
+					<div class="grid place-items-center z-10">
+						<div
+							class="w-16 h-16 grid place-items-center diamond-shape font-serif text-2xl"
+							:class="index >= stepIndex + 1 ? 'bg-very-dark-brown' : 'bg-light-brown'"
+						>
+							{{ index + 1 }}
+						</div>
+						<div class="font-serif">
+							{{ t(step) }}
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<Spacer height='16'></Spacer>
 
-			<Title2>{{ steps[stepIndex] }}</Title2>
+			<Title2>{{ t(steps[stepIndex]) }}</Title2>
 
 			<Spacer height='16'></Spacer>
 
@@ -209,7 +232,6 @@ import Button from '@/Components/Button.vue';
 import { useTranslation } from 'i18next-vue';
 import { ref, watch } from 'vue';
 import Title2 from '@/Components/Title2.vue';
-import ProgressBar from '@/Components/ProgressBar.vue';
 import Container from '@/Components/Container.vue';
 import PageLayout from '@/Components/layouts/PageLayout.vue';
 import CartArticle from '@/Components/CartArticle.vue';
@@ -221,10 +243,10 @@ const { t } = useTranslation();
 const stepIndex = ref(0);
 
 const steps = [
-	t('progressBar.cart'),
-	t('progressBar.details'),
-	t('progressBar.payment'),
-	t('progressBar.confirmation')
+	"progressBar.cart",
+	"progressBar.details",
+	"progressBar.payment",
+	"progressBar.confirmation"
 ];
 
 function checkoutPaypal() {

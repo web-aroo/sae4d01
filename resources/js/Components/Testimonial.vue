@@ -15,8 +15,8 @@
 			<slot></slot>
 		</div>
 		<div class='md:order-last'>
-			<img :src='`/img/testimonials/${firstName}.jpg`' :alt='firstName' class='rounded-full w-20 mb-2'>
-			<h3 class='capitalize text-xs md:text-base text-center'>{{ firstName }}</h3>
+			<img :src='imageUrl' :alt='firstName' class='rounded-full w-20 mb-2'>
+			<h3 class='capitalize text-xs md:text-base text-center'>{{ name }}</h3>
 		</div>
 	</div>
 </template>
@@ -25,7 +25,8 @@
 export default {
 	props: {
 		stars: Number,
-		firstName: String
+		name: String,
+		imageUrl: String
 	}
 };
 </script>

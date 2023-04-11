@@ -15,18 +15,17 @@ class UsersSeeder extends Seeder
 	{
 		$faker = Faker::create();
 
-		$array = ['billy', 'amine'];
-
 		foreach (range(1,10) as $index){
 			DB::table('users')->insert([
-				'name' => Arr::shuffle($array)[0],
+				'name' => $faker->name,
 				'email' => $faker->email,
+				'image_url' => $faker->imageUrl(256, 256, 'User', true),
+				'phone_number' => $faker->phoneNumber,
 				'email_verified_at' => now(),
 				'password' => Hash::make('password'),
 				'remember_token' => Str::random(10),
 				'created_at'=> now(),
 				'updated_at'=> now(),
-				'address' => $faker->address,
 				]);
 		}
 	}

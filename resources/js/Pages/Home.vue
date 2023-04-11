@@ -36,7 +36,8 @@
 				<Testimonial
 					v-for="review in reviews"
 					:stars="review.stars"
-					:first-name="review.user.name"
+					:name="review.user.name"
+					:image-url="review.user.image_url"
 					>{{ review.text }}</Testimonial
 				>
 			</div>

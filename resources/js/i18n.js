@@ -27,6 +27,7 @@ i18next
 						cart: 'Cart',
 						details: 'Details',
 						payment: 'Payment',
+						confirmation: 'Confirmation',
 					},
 					paymentMethod: {
 						error: 'Every fields must be fulfilled correctly.',
@@ -67,6 +68,10 @@ i18next
 					cart:{
 						nextStep: "Next step",
 						previousStep: "Previous step"
+					},
+					confirmation:{
+						message: "We are pleased to confirm that we have received your order and it is being processed. We will keep you updated on the progress of your order via email. Please do not hesitate to contact us if you have any questions or concerns regarding your order.",
+						backToHome: "Go back to home",
 					}
 				},
 			},

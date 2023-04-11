@@ -1,4 +1,7 @@
 <template>
+
+	<Spacer height="32"></Spacer>
+
 	<footer class='w-full bg-black text-white font-serif'>
 		<div class='md:py-4 md:flex md:justify-between m-auto'>
 			<div class='mb-4 md:mb-0 shrink-0'>
@@ -41,6 +44,7 @@
 <script setup>
 import LinkList from "@/Components/LinkList.vue";
 import {useTranslation} from "i18next-vue";
+import Spacer from "@/Components/Spacer.vue";
 
 const {t} = useTranslation();
 

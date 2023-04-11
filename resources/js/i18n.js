@@ -46,6 +46,22 @@ i18next
 						contact: 'Contact',
 						cart: 'Cart',
 					},
+					footer: {
+						navigation:{
+							title: "Navigation",
+							home: "Home",
+							adventures: "Adventures",
+							aboutUs: "About us",
+							contact: "Contact"
+						},
+						legal:{
+							title: "Legal",
+							privacyPolicy: "Privacy Policy",
+							termsOfUse: "Terms of use"
+						},
+						followUs: "Follow us",
+						contactUs: "Contact us"
+					},
 					detailsForm: {
 						error: 'Every fields must be fulfilled correctly.',
 						firstName: 'First name',
@@ -73,6 +89,87 @@ i18next
 					confirmation:{
 						message: "We are pleased to confirm that we have received your order and it is being processed. We will keep you updated on the progress of your order via email. Please do not hesitate to contact us if you have any questions or concerns regarding your order.",
 						backToHome: "Go back to home",
+					}
+				},
+			},
+			fr: {
+				translation: {
+					keyPoints: {
+						difficulty: {
+							easy: 'Facile',
+							medium: 'Moyen',
+							hard: 'Difficile',
+							unknown: 'Inconnu',
+						},
+						players: 'Joueurs',
+						minutes: 'Minutes',
+					},
+					progressBar: {
+						cart: 'Panier',
+						details: 'Détails',
+						payment: 'Paiement',
+						confirmation: 'Confirmation',
+					},
+					paymentMethod: {
+						error: 'Tous les champs doivent être remplis correctement',
+						blueCard: "Carte bleue",
+						cardHolder: 'Propriétaire de la carte',
+						cardNumber: 'Numéro de carte',
+						expirationDate: "Date d'expiration",
+						cvc: 'CVC',
+						proceedToPayment: 'Procéder au paiement',
+					},
+					header: {
+						logo: 'Kaiserstuhl Escape Logo',
+						home: 'Accueil',
+						adventures: 'Aventures',
+						aboutUs: 'À propos',
+						contact: 'Contact',
+						cart: 'Panier',
+					},
+					footer: {
+						navigation:{
+							title: "Navigation",
+							home: "Accueil",
+							adventures: "Aventures",
+							aboutUs: "A propos",
+							contact: "Contact"
+						},
+						legal:{
+							title: "Légal",
+							privacyPolicy: "Politique de confidentialité",
+							termsOfUse: "Conditions générales d'utilisation"
+						},
+						followUs: "Suivez-nous",
+						contactUs: "Contactez-nous"
+					},
+					detailsForm: {
+						error: 'Tous les champs doivent être remplis correctement.',
+						firstName: 'Prénom',
+						lastName: 'Nom',
+						emailAddress: 'Adresse mail',
+						phoneNumber: 'Numéro de téléphone',
+					},
+					adventureCard: {
+						bookNow: 'Réserver maintenant',
+					},
+					bookForm: {
+						title: 'Réserver à partir de {{ adventurePrice }} €',
+						reviews_one: '{{ count }} avis',
+						reviews_other: '{{ count }} avis',
+						date: 'Choisir une date',
+						time: 'Choisir un créneau',
+						priceFormula: 'Choisir une formule',
+						goToCart: 'Aller au panier',
+					},
+					cart:{
+						empty: "Le panier est vide.",
+						nextStep: "Suivant",
+						previousStep: "Précédent"
+					},
+					confirmation:{
+						message: "Nous avons le plaisir de vous confirmer que nous avons reçu votre commande et qu'elle est en cours de traitement. Nous vous tiendrons au courant de l'état d'avancement de votre commande par courrier électronique. N'hésitez pas à nous contacter si vous avez des questions ou des inquiétudes concernant votre commande.",
+						backToHome: "Retourner à l'accueil",
 					}
 				},
 			},

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Availability;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -33,13 +34,22 @@ class OrderController extends Controller
 		$cvc = $request->input("cvc");
 		$availabilities = $request->input("availabilities");
 
-		dd($phoneNumber);
-
 		$user = User::firstOrCreate(
 			['name' => $firstName." ".$lastName],
 			['email' => $emailAddress],
-			['phone_number' => $phoneNumber]
+			['phone_number' => $phoneNumber] // TODO: fix le numéro qui ne veut pas s'enregister
 		);
+
+		$order = new Order();
+		$order->user_id = $user->id;
+		$order->paid = 1;
+		$order->save();
+
+		foreach ($availabilities as $a){
+			$availability = Availability::find($a["id"]);
+			$availability->order_id = $order->id;
+			$availability->save();
+		}
 
 	}
 }

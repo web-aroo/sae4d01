@@ -66,6 +66,7 @@ i18next
 						goToCart: 'Go to cart',
 					},
 					cart:{
+						empty: "The cart is empty.",
 						nextStep: "Next step",
 						previousStep: "Previous step"
 					},

@@ -12,7 +12,11 @@
 
 			<Spacer height='16'></Spacer>
 
-			<div v-if='stepIndex === 0'>
+			<div v-if='availabilities.length === 0' class='grid place-items-center text-2xl'>
+				<p>{{ t('cart.empty') }}</p>
+			</div>
+
+			<div v-else-if='stepIndex === 0'>
 				<div class='grid gap-4'>
 					<CartArticle
 						v-for='availability in availabilities'
@@ -173,16 +177,16 @@
 
 			<div v-else-if='stepIndex === 3'>
 				<div class='grid gap-4 justify-center text-center'>
-					<p>{{t("confirmation.message")}}</p>
+					<p>{{ t('confirmation.message') }}</p>
 					<Button @click='router.get("/")'>
-						{{t("confirmation.backToHome")}}
+						{{ t('confirmation.backToHome') }}
 					</Button>
 				</div>
 			</div>
 
 			<Spacer height='8'></Spacer>
 
-			<div class='flex justify-between'>
+			<div class='flex justify-between' v-if='availabilities.length > 0'>
 				<Button @click='previousStep()' v-if='stepIndex > 0 && stepIndex < 3'>
 					{{ t('cart.previousStep') }}
 				</Button>
@@ -235,7 +239,7 @@ function checkoutPaypal() {
 	fetch('/checkout', {
 		method: 'post',
 		headers: {
-			"Content-Type": "application/json"
+			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(data)
 	}).then(response => {
@@ -269,7 +273,7 @@ function checkoutBlueCard() {
 	fetch('/checkout', {
 		method: 'post',
 		headers: {
-			"Content-Type": "application/json"
+			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(data)
 	}).then(response => {

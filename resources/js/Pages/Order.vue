@@ -65,7 +65,7 @@
 				<form class='grid gap-4 font-serif text-2xl'>
 
 					<Error v-if='error'>
-						{{ error }}
+						{{ t('detailsForm.error') }}
 					</Error>
 
 					<label class='grid'>
@@ -139,7 +139,7 @@
 						<form @submit.prevent='checkoutBlueCard()' class='bg-dark-brown grid p-3 gap-3 text-white'>
 
 							<Error v-if='error'>
-								{{ error }}
+								{{ t('paymentMethod.error') }}
 							</Error>
 
 							<label class='grid'>
@@ -274,10 +274,10 @@ function checkoutPaypal() {
 function checkoutBlueCard() {
 
 	if (!isPaymentFormValid()) {
-		error.value = t('paymentMethod.error');
+		error.value = true;
 		return;
 	}
-	error.value = null;
+	error.value = false;
 
 	const data = {
 		first_name: firstName.value,
@@ -309,12 +309,12 @@ function checkoutBlueCard() {
 function nextStep() {
 
 	if (stepIndex.value === 1 && !isDetailsFormValid()) {
-		error.value = t('detailsForm.error');
+		error.value = true;
 		return;
 	}
 
 	if (stepIndex.value < steps.length - 1) stepIndex.value++;
-	error.value = null;
+	error.value = false;
 }
 
 function previousStep() {
@@ -353,7 +353,7 @@ const expirationDateYearValid = ref(false);
 const cvc = ref('');
 const cvcValid = ref(false);
 
-const error = ref(null);
+const error = ref(false);
 
 watch(firstName, (value) => {
 	if (value.length > 0) {

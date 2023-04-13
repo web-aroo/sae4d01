@@ -60,7 +60,7 @@ i18next
 							aboutUs: 'About us',
 							contact: 'Contact',
 						},
-						legal:{
+						legal: {
 							title: 'Legal',
 							privacyPolicy: 'Privacy Policy',
 							termsOfUse: 'Terms of use',
@@ -102,12 +102,7 @@ i18next
 							'We are pleased to confirm that we have received your order and it is being processed. We will keep you updated on the progress of your order via email. Please do not hesitate to contact us if you have any questions or concerns regarding your order.',
 						backToHome: 'Go back to home',
 					},
-				},
-					confirmation:{
-						message: "We are pleased to confirm that we have received your order and it is being processed. We will keep you updated on the progress of your order via email. Please do not hesitate to contact us if you have any questions or concerns regarding your order.",
-						backToHome: "Go back to home",
-					},
-					legalNotices:{
+					legalNotices: {
 						title: "Legal notices",
 						generalInformations: {
 							title: "General information",
@@ -223,7 +218,7 @@ i18next
 							content: "If you have any questions about this Privacy Policy or wish to exercise your privacy rights, you may contact our customer service department by e-mail at contact@we-escape.de or by mail at We-Escape GmbH, Am Krebsbach 2g, 79241 Ihringen, Germany."
 						}
 					}
-				}
+				},
 			},
 			fr: {
 				translation: {
@@ -277,7 +272,7 @@ i18next
 						legal:{
 							title: 'Légal',
 							privacyPolicy: 'Politique de confidentialité',
-							termsOfUse: 'Conditions générales d'utilisation',
+							termsOfUse: "Conditions générales d'utilisation",
 							termsOfSale: 'Conditions générales de vente',
 							legalNotices: 'Mentions légales'
 						},

@@ -1,11 +1,11 @@
 <template>
 	<div class="md:flex md:flex-row-reverse md:items-center">
 		<div
-			class="w-full aspect-video border-8 border-very-dark-brown md:border-0 md:w-80 md:aspect-square"
+			class="hidden md:block w-80 aspect-square"
 		>
 			<img class="object-cover w-full h-full" :src="image" :alt="title" />
 		</div>
-		<div class="bg-very-dark-brown p-6 w-96 flex-grow">
+		<div class="bg-very-dark-brown flex-grow py-2 md:p-8">
 			<div class="flex justify-between p-3">
 				<difficulty-meter :difficulty="difficulty"></difficulty-meter>
 				<Button

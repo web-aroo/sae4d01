@@ -10,7 +10,7 @@
 			<Spacer height="10"></Spacer>
 			<Title2> {{ t('home.ourAdventures') }} </Title2>
 			<Spacer height="16"></Spacer>
-			<div v-for="(adventure, i) in adventures">
+			<div v-for="(adventure, i) in adventures" class="grid justify-center">
 				<AdventureCard
 					:title="adventure.name"
 					:difficulty="adventure.difficulty"
@@ -32,7 +32,7 @@
 			<Spacer height="16"></Spacer>
 			<Title2> {{ t('home.testimonials') }} </Title2>
 			<Spacer height="16"></Spacer>
-			<div class="flex gap-12">
+			<div class="grid justify-center gap-16">
 				<Testimonial
 					v-for="review in reviews"
 					:stars="review.stars"

@@ -16,8 +16,8 @@ defineProps({
 			<TitleAndSubtitle :title="adventure.name"></TitleAndSubtitle>
 		</Hero>
 		<Container>
-			<div class="flex flex-col-reverse items-start md:gap-4 md:flex-row">
-				<div class="grow">
+			<div class="flex flex-col-reverse md:items-start gap-8 md:flex-row text-center">
+				<div class="grow grid gap-8">
 					<KeyPoints
 						:difficulty="adventure.difficulty"
 						:min-player-count="adventure.min_player_count"

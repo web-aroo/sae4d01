@@ -14,6 +14,7 @@
 					:duration="adventure.duration"
 					:location="adventure.location"
 					:image="adventure.image_url"
+					:id="adventure.id"
 				>
 					<template #description>
 						{{ adventure.description }}

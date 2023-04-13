@@ -13,11 +13,11 @@ i18next
 		resources: {
 			en: {
 				translation: {
-					home:{
-						title: "One adventure at a time",
-						subtitle: "View our adventures",
-						ourAdventures: "Our adventures",
-						testimonials: "Testimonials"
+					home: {
+						title: 'One adventure at a time',
+						subtitle: 'View our adventures',
+						ourAdventures: 'Our adventures',
+						testimonials: 'Testimonials',
 					},
 					keyPoints: {
 						difficulty: {
@@ -37,7 +37,7 @@ i18next
 					},
 					paymentMethod: {
 						error: 'Every fields must be fulfilled correctly.',
-						blueCard: "Blue Card",
+						blueCard: 'Blue Card',
 						cardHolder: 'Card Holder',
 						cardNumber: 'Card Number',
 						expirationDate: 'Expiration Date',
@@ -53,20 +53,20 @@ i18next
 						cart: 'Cart',
 					},
 					footer: {
-						navigation:{
-							title: "Navigation",
-							home: "Home",
-							adventures: "Adventures",
-							aboutUs: "About us",
-							contact: "Contact"
+						navigation: {
+							title: 'Navigation',
+							home: 'Home',
+							adventures: 'Adventures',
+							aboutUs: 'About us',
+							contact: 'Contact',
 						},
-						legal:{
-							title: "Legal",
-							privacyPolicy: "Privacy Policy",
-							termsOfUse: "Terms of use"
+						legal: {
+							title: 'Legal',
+							privacyPolicy: 'Privacy Policy',
+							termsOfUse: 'Terms of use',
 						},
-						followUs: "Follow us",
-						contactUs: "Contact us"
+						followUs: 'Follow us',
+						contactUs: 'Contact us',
 					},
 					detailsForm: {
 						error: 'Every fields must be fulfilled correctly.',
@@ -87,24 +87,28 @@ i18next
 						priceFormula: 'Pick a price formula',
 						goToCart: 'Go to cart',
 					},
-					cart:{
-						empty: "The cart is empty.",
-						nextStep: "Next step",
-						previousStep: "Previous step"
+					adventure: {
+						full: 'This adventure is full, no more places available.',
 					},
-					confirmation:{
-						message: "We are pleased to confirm that we have received your order and it is being processed. We will keep you updated on the progress of your order via email. Please do not hesitate to contact us if you have any questions or concerns regarding your order.",
-						backToHome: "Go back to home",
-					}
+					cart: {
+						empty: 'The cart is empty.',
+						nextStep: 'Next step',
+						previousStep: 'Previous step',
+					},
+					confirmation: {
+						message:
+							'We are pleased to confirm that we have received your order and it is being processed. We will keep you updated on the progress of your order via email. Please do not hesitate to contact us if you have any questions or concerns regarding your order.',
+						backToHome: 'Go back to home',
+					},
 				},
 			},
 			fr: {
 				translation: {
-					home:{
-						title: "Des aventures inoubliables",
-						subtitle: "Voir nos aventures",
-						ourAdventures: "Nos aventures",
-						testimonials: "Témoignages"
+					home: {
+						title: 'Des aventures inoubliables',
+						subtitle: 'Voir nos aventures',
+						ourAdventures: 'Nos aventures',
+						testimonials: 'Témoignages',
 					},
 					keyPoints: {
 						difficulty: {
@@ -124,7 +128,7 @@ i18next
 					},
 					paymentMethod: {
 						error: 'Tous les champs doivent être remplis correctement',
-						blueCard: "Carte bleue",
+						blueCard: 'Carte bleue',
 						cardHolder: 'Propriétaire de la carte',
 						cardNumber: 'Numéro de carte',
 						expirationDate: "Date d'expiration",
@@ -140,20 +144,20 @@ i18next
 						cart: 'Panier',
 					},
 					footer: {
-						navigation:{
-							title: "Navigation",
-							home: "Accueil",
-							adventures: "Aventures",
-							aboutUs: "A propos",
-							contact: "Contact"
+						navigation: {
+							title: 'Navigation',
+							home: 'Accueil',
+							adventures: 'Aventures',
+							aboutUs: 'A propos',
+							contact: 'Contact',
 						},
-						legal:{
-							title: "Légal",
-							privacyPolicy: "Politique de confidentialité",
-							termsOfUse: "Conditions générales d'utilisation"
+						legal: {
+							title: 'Légal',
+							privacyPolicy: 'Politique de confidentialité',
+							termsOfUse: "Conditions générales d'utilisation",
 						},
-						followUs: "Suivez-nous",
-						contactUs: "Contactez-nous"
+						followUs: 'Suivez-nous',
+						contactUs: 'Contactez-nous',
 					},
 					detailsForm: {
 						error: 'Tous les champs doivent être remplis correctement.',
@@ -174,15 +178,19 @@ i18next
 						priceFormula: 'Choisir une formule',
 						goToCart: 'Aller au panier',
 					},
-					cart:{
-						empty: "Le panier est vide.",
-						nextStep: "Suivant",
-						previousStep: "Précédent"
+					adventure: {
+						full: "Cette aventure est complète, aucun créneau n'est disponible.",
 					},
-					confirmation:{
-						message: "Nous avons le plaisir de vous confirmer que nous avons reçu votre commande et qu'elle est en cours de traitement. Nous vous tiendrons au courant de l'état d'avancement de votre commande par courrier électronique. N'hésitez pas à nous contacter si vous avez des questions ou des inquiétudes concernant votre commande.",
+					cart: {
+						empty: 'Le panier est vide.',
+						nextStep: 'Suivant',
+						previousStep: 'Précédent',
+					},
+					confirmation: {
+						message:
+							"Nous avons le plaisir de vous confirmer que nous avons reçu votre commande et qu'elle est en cours de traitement. Nous vous tiendrons au courant de l'état d'avancement de votre commande par courrier électronique. N'hésitez pas à nous contacter si vous avez des questions ou des inquiétudes concernant votre commande.",
 						backToHome: "Retourner à l'accueil",
-					}
+					},
 				},
 			},
 		},

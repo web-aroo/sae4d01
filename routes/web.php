@@ -29,8 +29,9 @@ Route::get('adventures', function () {
 	]);
 });
 
-Route::resource('adventure', AdventureController::class)->only(['show']);
+Route::resource('adventures', AdventureController::class)->only(['show']);
 Route::get('/order', [OrderController::class, "order"]);
+Route::patch('/order', [OrderController::class, "toggleAvailability"]);
 Route::post('/checkout', [OrderController::class, "checkout"]);
 
 require __DIR__ . '/auth.php';

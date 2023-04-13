@@ -11,17 +11,41 @@ use Inertia\Inertia;
 class OrderController extends Controller
 {
 
-	public function order()
+	private function showCart($availabilitiesIds)
 	{
-
-		$availabilities = Availability::with(['adventure','priceFormula'])->get()->toArray(); // For test purpose
+		$availabilities = Availability::whereIn('id', array_keys($availabilitiesIds))->with(['adventure', 'priceFormula'])->get();
 
 		return Inertia::render('Order', [
 			"availabilities" => $availabilities
 		]);
 	}
 
-	public function checkout(Request $request){
+	public function toggleAvailability(Request $request)
+	{
+		$availabilityId = $request->input("availability_id");
+		$availability = Availability::find($availabilityId);
+		$cart = unserialize($request->session()->get('cart', 'a:0:{}'));
+		if (!empty($availability->order_id)) {
+			throw new \Exception("Availability is already booked");
+		} else {
+			if (array_key_exists($availabilityId, $cart)) {
+				unset($cart[$availabilityId]);
+			} else {
+				$cart[$availabilityId] = true;
+			}
+			$request->session()->put('cart', serialize($cart));
+		}
+		return $this->showCart($cart);
+	}
+
+	public function order(Request $request)
+	{
+		$availabilitiesIds = unserialize($request->session()->get('cart', 'a:0:{}'));
+		return $this->showCart($availabilitiesIds);
+	}
+
+	public function checkout(Request $request)
+	{
 
 		$firstName = $request->input("first_name");
 		$lastName = $request->input("last_name");
@@ -30,7 +54,7 @@ class OrderController extends Controller
 		$availabilities = $request->input("availabilities");
 
 		$user = User::firstOrCreate(
-			['name' => $firstName." ".$lastName],
+			['name' => $firstName . " " . $lastName],
 			['email' => $emailAddress],
 			['phone_number' => $phoneNumber] // TODO: fix le numéro qui ne veut pas s'enregister
 		);
@@ -40,11 +64,10 @@ class OrderController extends Controller
 		$order->paid = 1;
 		$order->save();
 
-		foreach ($availabilities as $a){
+		foreach ($availabilities as $a) {
 			$availability = Availability::find($a["id"]);
 			$availability->order_id = $order->id;
 			$availability->save();
 		}
-
 	}
 }

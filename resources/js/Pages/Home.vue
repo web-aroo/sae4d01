@@ -19,6 +19,7 @@
 					:duration="adventure.duration"
 					:location="adventure.location"
 					:image="adventure.image_url"
+					:id="adventure.id"
 					:class="i === 1 ? '!flex-row' : ''"
 				>
 					<template #description>

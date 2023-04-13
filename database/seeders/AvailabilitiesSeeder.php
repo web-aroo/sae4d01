@@ -13,16 +13,16 @@ class AvailabilitiesSeeder extends Seeder
 	{
 		$faker = Faker::create();
 
-		foreach (range(1,10) as $index){
+		foreach (range(1, 10) as $index) {
 			DB::table('availabilities')->insert([
 				'adventure_id' => $faker->numberBetween(1, 10),
 				'price_formula_id' => $faker->numberBetween(1, 10),
-				'start_at' => $faker->dateTimeBetween('now', '+1 years'),
-				'end_at' => $faker->dateTimeBetween('+1 years', '+2 years'),
-				'order_id' => $faker->numberBetween(1, 10),
-				'created_at'=> now(),
-				'updated_at'=> now(),
-				]);
+				'start_at' => $faker->dateTimeBetween('+1 month', '+2 months'),
+				'end_at' => $faker->dateTimeBetween('+2 months', '+3 months'),
+				'order_id' => null,
+				'created_at' => now(),
+				'updated_at' => now(),
+			]);
 		}
 	}
 }

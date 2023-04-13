@@ -12,6 +12,9 @@ class AdventureController extends Controller
 	 */
 	public function show(Adventure $adventure)
 	{
+		$adventure->load(['availabilities' => function ($query) {
+			$query->where('order_id', null)->orderBy('start_at');
+		}, 'availabilities.priceFormula']);
 		return Inertia::render('Adventure', [
 			'adventure' => $adventure,
 		]);

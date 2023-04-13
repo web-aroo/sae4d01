@@ -1,24 +1,26 @@
 <template>
-
 	<PageLayout>
-
-		<Container class='mt-32'>
-
+		<Container class="mt-32">
 			<div class="flex justify-center">
-				<div
-					v-for="(step, index) in steps"
-					class="flex"
-				>
+				<div v-for="(step, index) in steps" class="flex">
 					<div
 						class="h-2 w-32 sm:w-48 md:w-64 translate-y-7 -mx-4 z-0"
-						:class="index >= stepIndex + 1 ? 'bg-very-dark-brown' : 'bg-light-brown'"
+						:class="
+							index >= stepIndex + 1
+								? 'bg-very-dark-brown'
+								: 'bg-light-brown'
+						"
 						v-if="index > 0"
 					></div>
 
 					<div class="grid place-items-center z-10">
 						<div
 							class="w-16 h-16 grid place-items-center diamond-shape font-serif text-2xl"
-							:class="index >= stepIndex + 1 ? 'bg-very-dark-brown' : 'bg-light-brown'"
+							:class="
+								index >= stepIndex + 1
+									? 'bg-very-dark-brown'
+									: 'bg-light-brown'
+							"
 						>
 							{{ index + 1 }}
 						</div>
@@ -29,168 +31,238 @@
 				</div>
 			</div>
 
-			<Spacer height='16'></Spacer>
+			<Spacer height="16"></Spacer>
 
 			<Title2>{{ t(steps[stepIndex]) }}</Title2>
 
-			<Spacer height='16'></Spacer>
+			<Spacer height="16"></Spacer>
 
-			<div v-if='availabilities.length === 0' class='grid place-items-center text-2xl'>
+			<div
+				v-if="availabilities.length === 0"
+				class="grid place-items-center text-2xl"
+			>
 				<p>{{ t('cart.empty') }}</p>
 			</div>
 
-			<div v-else-if='stepIndex === 0'>
-				<div class='grid gap-4'>
+			<div v-else-if="stepIndex === 0">
+				<div class="grid gap-4">
 					<CartArticle
-						v-for='availability in availabilities'
-						:title='availability.adventure.name'
-						:image='availability.adventure.image_url'
-						:date='new Date(availability.start_at).toLocaleDateString()'
-						:time='new Date(availability.start_at).toLocaleTimeString()'
-						:price='availability.price_formula.price'
-						:player-count='availability.price_formula.player_count'
+						v-for="availability in availabilities"
+						:title="availability.adventure.name"
+						:image="availability.adventure.image_url"
+						:date="
+							new Date(availability.start_at).toLocaleDateString()
+						"
+						:time="
+							new Date(availability.start_at).toLocaleTimeString()
+						"
+						:price="availability.price_formula.price"
+						:player-count="availability.price_formula.player_count"
+						:id="availability.id"
 					/>
 				</div>
 
-				<Spacer height='8'></Spacer>
+				<Spacer height="8"></Spacer>
 
-				<div class='grid place-items-end gap-4'>
-					<div class='text-2xl'>
-						Total : {{ getTotalPrice() }}€
-					</div>
+				<div class="grid place-items-end gap-4">
+					<div class="text-2xl">Total : {{ getTotalPrice() }}€</div>
 				</div>
 			</div>
 
-			<div v-else-if='stepIndex === 1'>
-				<form class='grid gap-4 font-serif text-2xl'>
-
-					<Error v-if='error'>
+			<div v-else-if="stepIndex === 1">
+				<form class="grid gap-4 font-serif text-2xl">
+					<Error v-if="error">
 						{{ t('detailsForm.error') }}
 					</Error>
 
-					<label class='grid'>
-						<div class='flex gap-2'>
+					<label class="grid">
+						<div class="flex gap-2">
 							{{ t('detailsForm.firstName') }}
-							<div v-if='firstNameValid'>
-								✔️
-							</div>
+							<div v-if="firstNameValid">✔️</div>
 						</div>
 
-						<input type='text' class='font-sans text-black' v-model='firstName'>
+						<input
+							type="text"
+							class="font-sans text-black"
+							v-model="firstName"
+						/>
 					</label>
 
-					<label class='grid'>
-						<div class='flex gap-2'>
+					<label class="grid">
+						<div class="flex gap-2">
 							{{ t('detailsForm.lastName') }}
-							<div v-if='lastNameValid'>
-								✔️
-							</div>
+							<div v-if="lastNameValid">✔️</div>
 						</div>
-						<input type='text' class='font-sans text-black' v-model='lastName'>
+						<input
+							type="text"
+							class="font-sans text-black"
+							v-model="lastName"
+						/>
 					</label>
 
-					<label class='grid'>
-						<div class='flex gap-2'>
+					<label class="grid">
+						<div class="flex gap-2">
 							{{ t('detailsForm.emailAddress') }}
-							<div v-if='emailAddressValid'>
-								✔️
-							</div>
+							<div v-if="emailAddressValid">✔️</div>
 						</div>
-						<input type='email' class='font-sans text-black' v-model='emailAddress'>
+						<input
+							type="email"
+							class="font-sans text-black"
+							v-model="emailAddress"
+						/>
 					</label>
 
-					<label class='grid'>
-						<div class='flex gap-2'>
+					<label class="grid">
+						<div class="flex gap-2">
 							{{ t('detailsForm.phoneNumber') }}
-							<div v-if='phoneNumberValid'>
-								✔️
-							</div>
+							<div v-if="phoneNumberValid">✔️</div>
 						</div>
-						<input type='tel' class='font-sans text-black' v-model='phoneNumber'>
+						<input
+							type="tel"
+							class="font-sans text-black"
+							v-model="phoneNumber"
+						/>
 					</label>
-
 				</form>
 			</div>
 
-			<div v-else-if='stepIndex === 2'>
-				<div class='grid gap-4'>
-
-					<div class='bg-dark-brown p-3 flex gap-3 items-center cursor-pointer' @click='checkoutPaypal()'>
-						<font-awesome-icon icon='fa-brands fa-paypal' size='3x' style='color: #ffffff;' class='w-16' />
-						<div class='bg-white w-0.5 h-10'></div>
-						<p class='text-2xl text-white'>Paypal</p>
+			<div v-else-if="stepIndex === 2">
+				<div class="grid gap-4">
+					<div
+						class="bg-dark-brown p-3 flex gap-3 items-center cursor-pointer"
+						@click="checkoutPaypal()"
+					>
+						<font-awesome-icon
+							icon="fa-brands fa-paypal"
+							size="3x"
+							style="color: #ffffff"
+							class="w-16"
+						/>
+						<div class="bg-white w-0.5 h-10"></div>
+						<p class="text-2xl text-white">Paypal</p>
 					</div>
 
 					<details>
-
-						<summary class='bg-dark-brown p-3 items-center flex justify-between cursor-pointer'>
-							<div class='flex gap-3 items-center'>
-								<font-awesome-icon icon='fa-solid fa-building-columns' size='3x' style='color: #ffffff;'
-												   class='w-16' />
-								<div class='bg-white w-0.5 h-10'></div>
-								<p class='text-2xl text-white'>{{ t('paymentMethod.blueCard') }}</p>
+						<summary
+							class="bg-dark-brown p-3 items-center flex justify-between cursor-pointer"
+						>
+							<div class="flex gap-3 items-center">
+								<font-awesome-icon
+									icon="fa-solid fa-building-columns"
+									size="3x"
+									style="color: #ffffff"
+									class="w-16"
+								/>
+								<div class="bg-white w-0.5 h-10"></div>
+								<p class="text-2xl text-white">
+									{{ t('paymentMethod.blueCard') }}
+								</p>
 							</div>
-							<div class='Chevron duration-200'>
-								<font-awesome-icon icon='fa-solid fa-chevron-up' size='3x' style='color: #ffffff;'
-												   class='w-16' />
+							<div class="Chevron duration-200">
+								<font-awesome-icon
+									icon="fa-solid fa-chevron-up"
+									size="3x"
+									style="color: #ffffff"
+									class="w-16"
+								/>
 							</div>
 						</summary>
 
-						<form @submit.prevent='checkoutBlueCard()' class='bg-dark-brown grid p-3 gap-3 text-white'>
-
-							<Error v-if='error'>
+						<form
+							@submit.prevent="checkoutBlueCard()"
+							class="bg-dark-brown grid p-3 gap-3 text-white"
+						>
+							<Error v-if="error">
 								{{ t('paymentMethod.error') }}
 							</Error>
 
-							<label class='grid'>
-								<div class='flex gap-2'>
-									<div class='font-serif text-xl'>{{ t('paymentMethod.cardHolder') }}</div>
-									<div v-if='cardHolderValid'>
-										✔️
+							<label class="grid">
+								<div class="flex gap-2">
+									<div class="font-serif text-xl">
+										{{ t('paymentMethod.cardHolder') }}
 									</div>
+									<div v-if="cardHolderValid">✔️</div>
 								</div>
-								<input type='text' name='cardHolder' class='text-black font-sans' placeholder='John Doe'
-									   v-model='cardHolder'>
+								<input
+									type="text"
+									name="cardHolder"
+									class="text-black font-sans"
+									placeholder="John Doe"
+									v-model="cardHolder"
+								/>
 							</label>
-							<label class='grid'>
-								<div class='flex gap-2'>
-									<div class='font-serif text-xl'>{{ t('paymentMethod.cardNumber') }}</div>
-									<div v-if='cardNumberValid'>
-										✔️
+							<label class="grid">
+								<div class="flex gap-2">
+									<div class="font-serif text-xl">
+										{{ t('paymentMethod.cardNumber') }}
 									</div>
+									<div v-if="cardNumberValid">✔️</div>
 								</div>
-								<input type='text' name='cardNumber' class='text-black font-sans'
-									   placeholder='1234 5678 9012 3456' v-model='cardNumber'>
+								<input
+									type="text"
+									name="cardNumber"
+									class="text-black font-sans"
+									placeholder="1234 5678 9012 3456"
+									v-model="cardNumber"
+								/>
 							</label>
-							<div class='flex justify-between'>
-								<label class='grid'>
-									<div class='flex gap-2'>
-										<div class='font-serif text-xl'>{{ t('paymentMethod.expirationDate') }}</div>
-										<div v-if='expirationDateMonthValid && expirationDateYearValid'>
+							<div class="flex justify-between">
+								<label class="grid">
+									<div class="flex gap-2">
+										<div class="font-serif text-xl">
+											{{
+												t(
+													'paymentMethod.expirationDate'
+												)
+											}}
+										</div>
+										<div
+											v-if="
+												expirationDateMonthValid &&
+												expirationDateYearValid
+											"
+										>
 											✔️
 										</div>
 									</div>
 									<div>
-										<input type='number' name='expirationDateMonth'
-											   class='w-16 text-black font-sans' max='12' placeholder='MM'
-											   v-model='expirationDateMonth'>
+										<input
+											type="number"
+											name="expirationDateMonth"
+											class="w-16 text-black font-sans"
+											max="12"
+											placeholder="MM"
+											v-model="expirationDateMonth"
+										/>
 										/
-										<input type='number' name='expirationDateYear' class='w-16 text-black font-sans'
-											   max='99' placeholder='YY' v-model='expirationDateYear'>
+										<input
+											type="number"
+											name="expirationDateYear"
+											class="w-16 text-black font-sans"
+											max="99"
+											placeholder="YY"
+											v-model="expirationDateYear"
+										/>
 									</div>
 								</label>
-								<label class='grid'>
-									<div class='flex gap-2'>
-										<div class='font-serif text-xl'>{{ t('paymentMethod.cvc') }}</div>
-										<div v-if='cvcValid'>
-											✔️
+								<label class="grid">
+									<div class="flex gap-2">
+										<div class="font-serif text-xl">
+											{{ t('paymentMethod.cvc') }}
 										</div>
+										<div v-if="cvcValid">✔️</div>
 									</div>
-									<input type='number' name='cvc' class='w-16 text-black font-sans' max='9999'
-										   placeholder='1234' v-model='cvc'>
+									<input
+										type="number"
+										name="cvc"
+										class="w-16 text-black font-sans"
+										max="9999"
+										placeholder="1234"
+										v-model="cvc"
+									/>
 								</label>
 							</div>
-							<Button type='submit'>
+							<Button type="submit">
 								{{ t('paymentMethod.proceedToPayment') }}
 							</Button>
 						</form>
@@ -198,33 +270,33 @@
 				</div>
 			</div>
 
-			<div v-else-if='stepIndex === 3'>
-				<div class='grid gap-4 justify-center text-center'>
+			<div v-else-if="stepIndex === 3">
+				<div class="grid gap-4 justify-center text-center">
 					<p>{{ t('confirmation.message') }}</p>
-					<Button @click='router.get("/")'>
+					<Button @click="router.get('/')">
 						{{ t('confirmation.backToHome') }}
 					</Button>
 				</div>
 			</div>
 
-			<Spacer height='8'></Spacer>
+			<Spacer height="8"></Spacer>
 
-			<div class='flex justify-between' v-if='availabilities.length > 0'>
-				<Button @click='previousStep()' v-if='stepIndex > 0 && stepIndex < 3'>
+			<div class="flex justify-between" v-if="availabilities.length > 0">
+				<Button
+					@click="previousStep()"
+					v-if="stepIndex > 0 && stepIndex < 3"
+				>
 					{{ t('cart.previousStep') }}
 				</Button>
 				<div v-else></div>
 
-				<Button @click='nextStep()' v-if='stepIndex < 2'>
+				<Button @click="nextStep()" v-if="stepIndex < 2">
 					{{ t('cart.nextStep') }}
 				</Button>
 				<div v-else></div>
 			</div>
-
 		</Container>
-
 	</PageLayout>
-
 </template>
 <script setup>
 import Spacer from '@/Components/Spacer.vue';
@@ -243,10 +315,10 @@ const { t } = useTranslation();
 const stepIndex = ref(0);
 
 const steps = [
-	"progressBar.cart",
-	"progressBar.details",
-	"progressBar.payment",
-	"progressBar.confirmation"
+	'progressBar.cart',
+	'progressBar.details',
+	'progressBar.payment',
+	'progressBar.confirmation',
 ];
 
 function checkoutPaypal() {
@@ -255,16 +327,16 @@ function checkoutPaypal() {
 		last_name: lastName.value,
 		phone_number: phoneNumber.value,
 		email_address: emailAddress.value,
-		availabilities: props.availabilities
+		availabilities: props.availabilities,
 	};
 
 	fetch('/checkout', {
 		method: 'post',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(data)
-	}).then(response => {
+		body: JSON.stringify(data),
+	}).then((response) => {
 		if (response.ok) {
 			nextStep();
 		}
@@ -272,7 +344,6 @@ function checkoutPaypal() {
 }
 
 function checkoutBlueCard() {
-
 	if (!isPaymentFormValid()) {
 		error.value = true;
 		return;
@@ -289,25 +360,23 @@ function checkoutBlueCard() {
 		expiration_date_month: expirationDateMonth.value,
 		expiration_date_year: expirationDateYear.value,
 		cvc: cvc.value,
-		availabilities: props.availabilities
+		availabilities: props.availabilities,
 	};
 
 	fetch('/checkout', {
 		method: 'post',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(data)
-	}).then(response => {
+		body: JSON.stringify(data),
+	}).then((response) => {
 		if (response.ok) {
 			nextStep();
 		}
 	});
-
 }
 
 function nextStep() {
-
 	if (stepIndex.value === 1 && !isDetailsFormValid()) {
 		error.value = true;
 		return;
@@ -323,7 +392,7 @@ function previousStep() {
 }
 
 const props = defineProps({
-	availabilities: Array
+	availabilities: Array,
 });
 
 const firstName = ref('');
@@ -398,7 +467,8 @@ watch(cardHolder, (value) => {
 });
 
 watch(cardNumber, (value) => {
-	const cardNumberRegex = /^((4\d{3})|(5[1-5]\d{2})|(6011)|(7\d{3}))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$/;
+	const cardNumberRegex =
+		/^((4\d{3})|(5[1-5]\d{2})|(6011)|(7\d{3}))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$/;
 	if (!!value.match(cardNumberRegex)) {
 		cardNumberValid.value = true;
 		return;
@@ -434,48 +504,42 @@ watch(cvc, (value) => {
 });
 
 function isDetailsFormValid() {
-
 	const inputsStatus = [
 		firstNameValid.value,
 		lastNameValid.value,
 		phoneNumberValid.value,
-		emailAddressValid.value
+		emailAddressValid.value,
 	];
 
-	return inputsStatus.every(value => value === true);
+	return inputsStatus.every((value) => value === true);
 }
 
 function isPaymentFormValid() {
-
 	const inputsStatus = [
 		cardHolderValid.value,
 		cardNumberValid.value,
 		expirationDateMonthValid.value,
 		expirationDateYearValid.value,
-		cvcValid.value
+		cvcValid.value,
 	];
 
-	return inputsStatus.every(value => value === true);
+	return inputsStatus.every((value) => value === true);
 }
 
 function getTotalPrice() {
 	let total = 0;
-	props.availabilities.forEach(availability => {
+	props.availabilities.forEach((availability) => {
 		total += availability.price_formula.price;
 	});
 	return total;
 }
-
 </script>
 
-<style scoped lang='scss'>
-
+<style scoped lang="scss">
 details[open] {
-
 	& .Chevron {
 		transform: rotate(-180deg);
 	}
-
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -486,8 +550,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
 	-moz-appearance: textfield;
 }
-
 </style>

@@ -8,9 +8,11 @@
 		<div class="bg-very-dark-brown p-6 w-96 flex-grow">
 			<div class="flex justify-between p-3">
 				<difficulty-meter :difficulty="difficulty"></difficulty-meter>
-				<Button class="!text-sm !p-2 !px-8 md:hidden">{{
-					$t('adventureCard.bookNow')
-				}}</Button>
+				<Button
+					@click="bookNow"
+					class="!text-sm !p-2 !px-8 md:hidden"
+					>{{ $t('adventureCard.bookNow') }}</Button
+				>
 			</div>
 			<div class="flex flex-col items-center m-2">
 				<h3 class="font-bold md:text-3xl">
@@ -44,6 +46,7 @@
 				</p>
 				<Button
 					class="!text-sm !p-2 !px-8 hidden md:block md:!text-base md:m-3"
+					@click="bookNow"
 					>{{ $t('adventureCard.bookNow') }}</Button
 				>
 			</div>
@@ -56,6 +59,7 @@ import KeyPoints from '@/Components/KeyPoints.vue';
 import DifficultyMeter from '@/Components/DifficultyMeter.vue';
 import Button from '@/Components/Button.vue';
 import Separator from '@/Components/Separator.vue';
+import { router } from '@inertiajs/vue3';
 
 export default {
 	name: 'AdventureCard',
@@ -68,6 +72,12 @@ export default {
 		location: String,
 		title: String,
 		image: String,
+		id: Number,
+	},
+	methods: {
+		bookNow() {
+			router.get(`/adventures/${this.id}`);
+		},
 	},
 };
 </script>

@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
+import { router } from '@inertiajs/vue3';
 import { DatePicker } from 'v-calendar';
 import Button from './Button.vue';
 import {
@@ -9,6 +10,7 @@ import {
 	max,
 	endOfDay,
 	eachDayOfInterval,
+	parseISO,
 } from 'date-fns';
 import { uniqBy } from 'lodash';
 import 'v-calendar/style.css';
@@ -29,10 +31,10 @@ const { reviews, rating, availabilities } = defineProps({
 			// This is mocked data, it needs to be replaced from the backend once it's done
 			const today = new Date();
 			return Array.from({ length: 40 }, (_, i) => ({
-				startAt: add(today, {
+				start_at: add(today, {
 					days: Math.floor(i / 2) * 2,
 				}),
-				priceFormula:
+				price_formula:
 					i % 2 === 0
 						? { id: 3, name: 'Web', price: 59 }
 						: { id: 4, name: 'Android', price: 69 },
@@ -50,7 +52,9 @@ const time = ref(null);
 const selectedAvailability = ref(null);
 
 const maxDate = computed(() => {
-	const maxAvailability = max(availabilities.map((a) => a.startAt));
+	const maxAvailability = max(
+		availabilities.map((a) => parseISO(a.start_at))
+	);
 	return endOfDay(maxAvailability ? maxAvailability : today);
 });
 const disabledDates = computed(() => {
@@ -58,31 +62,35 @@ const disabledDates = computed(() => {
 		start: today,
 		end: maxDate.value,
 	}).filter((d) => {
-		return !availabilities.some((a) => isSameDay(a.startAt, d));
+		return !availabilities.some((a) => isSameDay(parseISO(a.start_at), d));
 	});
 });
 const availabilitiesForTheDay = computed(() => {
 	if (!date.value) {
 		return [];
 	}
-	return availabilities.filter((a) => isSameDay(a.startAt, date.value));
+	return availabilities.filter((a) =>
+		isSameDay(parseISO(a.start_at), date.value)
+	);
 });
 const availableTimes = computed(() => {
 	if (!availabilitiesForTheDay.value.length) {
 		return [];
 	}
-	return uniqBy(availabilitiesForTheDay.value, (a) => a.startAt.getTime());
+	return uniqBy(availabilitiesForTheDay.value, (a) =>
+		parseISO(a.start_at).getTime()
+	);
 });
 const availabilitiesForTheTime = computed(() => {
 	if (!time.value) {
 		return [];
 	}
 	return availabilitiesForTheDay.value.filter((a) =>
-		isEqual(a.startAt, time.value)
+		isEqual(parseISO(a.start_at), time.value)
 	);
 });
 const lowestPrice = computed(() => {
-	return Math.min(...availabilities.map((a) => a.priceFormula.price));
+	return Math.min(...availabilities.map((a) => a.price_formula.price));
 });
 
 watch(date, (newDate) => {
@@ -106,13 +114,14 @@ watch(time, (newTime) => {
 });
 
 const addToCart = () => {
-	// TODO: store cart entries
-	// TODO: redirect to cart page
+	router.patch('/order', {
+		availability_id: selectedAvailability.value.id,
+	});
 };
 </script>
 
 <template>
-	<div class="bg-very-dark-brown p-6 max-w-md">
+	<div class="bg-very-dark-brown p-6 md:min-w-[20rem] max-w-md">
 		<h2 class="text-xl font-bold">
 			{{ $t('bookForm.title', { adventurePrice: lowestPrice }) }}
 		</h2>
@@ -147,12 +156,15 @@ const addToCart = () => {
 						class="border-2 border-gray-900 text-center py-4 text-gray-900"
 						v-for="hour in availableTimes"
 						:key="hour"
-						@click="time = hour.startAt"
+						@click="time = parseISO(hour.start_at)"
 					>
 						{{
-							hour.startAt.toLocaleTimeString(undefined, {
-								hour: '2-digit',
-							})
+							parseISO(hour.start_at).toLocaleTimeString(
+								undefined,
+								{
+									hour: '2-digit',
+								}
+							)
 						}}
 					</button>
 				</div>
@@ -161,7 +173,7 @@ const addToCart = () => {
 				<div class="py-3 px-6 flex flex-col gap-2">
 					<label
 						v-for="availability in availabilitiesForTheTime"
-						:key="availability.priceFormula.id"
+						:key="availability.price_formula.id"
 					>
 						<input
 							type="radio"
@@ -169,8 +181,8 @@ const addToCart = () => {
 							v-model="selectedAvailability"
 							:value="availability"
 						/>
-						{{ availability.priceFormula.name }}&nbsp;&dash;
-						{{ availability.priceFormula.price }}&nbsp;€
+						{{ availability.price_formula.name }}&nbsp;&dash;
+						{{ availability.price_formula.price }}&nbsp;€
 					</label>
 				</div>
 			</BookBlock>

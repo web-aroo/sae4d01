@@ -23,6 +23,12 @@ Route::get('/', function () {
 	]);
 });
 
+Route::get('adventures', function () {
+	return Inertia::render('Adventures', [
+		'adventures' => \App\Models\Adventure::all()->toArray(),
+	]);
+});
+
 Route::resource('adventure', AdventureController::class)->only(['show']);
 Route::get('/order', [OrderController::class, "order"]);
 Route::post('/checkout', [OrderController::class, "checkout"]);

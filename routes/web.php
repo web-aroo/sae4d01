@@ -34,4 +34,20 @@ Route::get('/order', [OrderController::class, "order"]);
 Route::patch('/order', [OrderController::class, "toggleAvailability"]);
 Route::post('/checkout', [OrderController::class, "checkout"]);
 
+Route::get("/legal-notices", function (){
+	return Inertia::render('LegalNotices');
+});
+
+Route::get("/terms-of-use", function (){
+	return Inertia::render('TermsOfUse');
+});
+
+Route::get("/terms-of-sale", function (){
+	return Inertia::render('TermsOfSale');
+});
+
+Route::get("/privacy-policy", function (){
+	return Inertia::render('PrivacyPolicy');
+});
+
 require __DIR__ . '/auth.php';

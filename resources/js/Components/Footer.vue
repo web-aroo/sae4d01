@@ -17,8 +17,10 @@
 						<li><a href='#'>{{t("footer.navigation.contact")}}</a></li>
 					</LinkList>
 					<LinkList :title='t("footer.legal.title")'>
-						<li><a href='#'>{{t("footer.legal.privacyPolicy")}}</a></li>
-						<li><a href='#'>{{t("footer.legal.termsOfUse")}}</a></li>
+						<li><a href='/privacy-policy'>{{t("footer.legal.privacyPolicy")}}</a></li>
+						<li><a href='/terms-of-use'>{{t("footer.legal.termsOfUse")}}</a></li>
+						<li><a href='/terms-of-sale'>{{t("footer.legal.termsOfSale")}}</a></li>
+						<li><a href='/legal-notices'>{{t("footer.legal.legalNotices")}}</a></li>
 					</LinkList>
 					<LinkList :title='t("footer.followUs")'>
 						<div class='flex gap-3 text-3xl'>

@@ -1,10 +1,10 @@
 <template>
 	<PageLayout>
 		<Container class="mt-32">
-			<div class="flex justify-center">
+			<div class="hidden md:flex justify-center">
 				<div v-for="(step, index) in steps" class="flex">
 					<div
-						class="h-2 w-32 sm:w-48 md:w-64 translate-y-7 -mx-4 z-0"
+						class="h-2 md:w-32 xl:w-64 translate-y-7 -mx-4 z-0"
 						:class="
 							index >= stepIndex + 1
 								? 'bg-very-dark-brown'

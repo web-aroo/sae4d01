@@ -1,6 +1,6 @@
 <template>
 	<PageLayout>
-		<Container class="mt-32">
+		<Container class="mt-32 grid gap-8">
 			<div class="hidden md:flex justify-center">
 				<div v-for="(step, index) in steps" class="flex">
 					<div
@@ -31,11 +31,8 @@
 				</div>
 			</div>
 
-			<Spacer height="16"></Spacer>
 
 			<Title2>{{ t(steps[stepIndex]) }}</Title2>
-
-			<Spacer height="16"></Spacer>
 
 			<div
 				v-if="availabilities.length === 0"
@@ -44,8 +41,8 @@
 				<p>{{ t('cart.empty') }}</p>
 			</div>
 
-			<div v-else-if="stepIndex === 0">
-				<div class="grid gap-4">
+			<div v-else-if="stepIndex === 0" class="grid gap-8">
+				<div class="grid gap-8">
 					<CartArticle
 						v-for="availability in availabilities"
 						:title="availability.adventure.name"
@@ -62,15 +59,13 @@
 					/>
 				</div>
 
-				<Spacer height="8"></Spacer>
-
-				<div class="grid place-items-end gap-4">
+				<div class="grid place-items-end">
 					<div class="text-2xl">Total : {{ getTotalPrice() }}€</div>
 				</div>
 			</div>
 
 			<div v-else-if="stepIndex === 1">
-				<form class="grid gap-4 font-serif text-2xl">
+				<form class="grid gap-8 font-serif text-2xl">
 					<Error v-if="error">
 						{{ t('detailsForm.error') }}
 					</Error>
@@ -127,7 +122,7 @@
 			</div>
 
 			<div v-else-if="stepIndex === 2">
-				<div class="grid gap-4">
+				<div class="grid gap-8">
 					<div
 						class="bg-dark-brown p-3 flex gap-3 items-center cursor-pointer"
 						@click="checkoutPaypal()"
@@ -271,15 +266,13 @@
 			</div>
 
 			<div v-else-if="stepIndex === 3">
-				<div class="grid gap-4 justify-center text-center">
+				<div class="grid gap-8 justify-center text-center">
 					<p>{{ t('confirmation.message') }}</p>
 					<Button @click="router.get('/')">
 						{{ t('confirmation.backToHome') }}
 					</Button>
 				</div>
 			</div>
-
-			<Spacer height="8"></Spacer>
 
 			<div class="flex justify-between" v-if="availabilities.length > 0">
 				<Button

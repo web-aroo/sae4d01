@@ -1,6 +1,6 @@
 <template>
 	<button
-		class="bg-light-brown px-16 py-4 text-white active:scale-95 font-serif text-2xl shadow-custom font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
+		class="bg-light-brown px-8 py-4 text-white active:scale-95 font-serif md:text-2xl shadow-custom font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
 		:type="type"
 	>
 		<slot></slot>

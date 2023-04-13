@@ -1,12 +1,12 @@
 <template>
 	<div
-		class="grid grid-cols-1 sm:grid-cols-[auto_1fr] bg-very-dark-brown font-serif"
+		class="grid grid-cols-1 md:grid-cols-[auto_1fr] bg-very-dark-brown font-serif"
 	>
-		<div class="hidden sm:block w-48 aspect-square">
+		<div class="hidden md:block w-48 aspect-square">
 			<img :src="image" class="w-full h-full object-cover" />
 		</div>
 		<div class="p-4 grid gap-2">
-			<div class="flex justify-between text-2xl sm:text-3xl font-bold">
+			<div class="flex justify-between text-2xl md:text-3xl font-bold">
 				<div>{{ title }}</div>
 				<div>{{ price }}&nbsp;€</div>
 			</div>

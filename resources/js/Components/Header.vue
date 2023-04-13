@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import { useTranslation } from 'i18next-vue';
-import LanguageSwitcher from "@/Components/LanguageSwitcher.vue";
+import LanguageSwitcher from '@/Components/LanguageSwitcher.vue';
 
 const { t } = useTranslation();
 
@@ -13,7 +13,9 @@ const open = ref(false);
 	<header
 		class="py-2 lg:py-4 px-5 lg:px-10 grid grid-cols-2 lg:grid-cols-4 fixed inset-x-0 top-0 items-center bg-gradient-to-b from-black to-transparent z-10"
 	>
-		<img src="/img/logo.png" :alt="t('header.logo')" />
+		<Link href="/">
+			<img src="/img/logo.png" :alt="t('header.logo')" />
+		</Link>
 		<nav
 			class="hidden lg:flex col-span-2 items-center gap-14 lowercase justify-self-center"
 		>

@@ -24,7 +24,10 @@ defineProps({
 						:max-player-count="adventure.max_player_count"
 						:duration="adventure.duration"
 					/>
-					<p v-if="adventure.availabilities.length === 0">
+					<p
+						v-if="adventure.availabilities.length === 0"
+						class="text-center border border-red-500 p-2 mb-2 font-bold"
+					>
 						{{ $t('adventure.full') }}
 					</p>
 					<p>
